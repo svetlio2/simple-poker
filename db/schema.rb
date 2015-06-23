@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150623095348) do
+ActiveRecord::Schema.define(version: 20150623111456) do
 
   create_table "chat_rooms", force: :cascade do |t|
     t.string "name"
@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 20150623095348) do
   create_table "messages", force: :cascade do |t|
     t.string  "user_name"
     t.string  "content"
-    t.integer "chat_rooms_id"
+    t.integer "chat_room_id"
   end
 
-  add_index "messages", ["chat_rooms_id"], name: "index_messages_on_chat_rooms_id"
+  add_index "messages", ["chat_room_id"], name: "index_messages_on_chat_room_id"
 
 end

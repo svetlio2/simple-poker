@@ -1,0 +1,7 @@
+<h1> Enter your name and chat with strangers</h1>
+<div id='form'>
+  <%= form_tag(session_path, method: 'post') do %>
+    <%= text_field_tag(:name) %>
+    <%= submit_tag('Begin chat') %>
+  <% end %>
+</div>

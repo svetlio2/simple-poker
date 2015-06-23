@@ -1,0 +1,15 @@
+<h1> Choose room or create new one</h1>
+
+<div id='chat_rooms'>
+  <h2>Available rooms</h2>
+  <% @chat_rooms.each do |chat_room| %>
+  <%= link_to "#{chat_room.name}", chat_room_path(chat_room) %>
+  <%= link_to 'delete', chat_room_path(chat_room),
+               method: :delete, data: { confirm: 'Are you sure?'} %>
+  <br>
+  <% end %> 
+</div>
+
+<div new>
+  
+</div>
