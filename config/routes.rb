@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   resources :chat_rooms, except: :show
 
   scope '/chat_rooms/:id' do
-    get '/' => 'current_chat_room#index', as: :current_chat_room
-    post '/' => 'current_chat_room#create'
+    get '/' => 'messages#index'
+    post '/' => 'messages#create'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

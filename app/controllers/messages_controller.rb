@@ -1,8 +1,8 @@
-class CurrentChatRoomController < ApplicationController
+class MessagesController < ApplicationController
+  before_action :require_real_chat_room
   def index
-    @current_chat_room = ChatRoom.find(params[:id])
     @message = Message.new
-    redirect_to chat_rooms_path if @current_chat_room.nil?
+    redirect_to chat_rooms_path if @chat_room.nil?
   end
 
   def create
@@ -19,5 +19,15 @@ class CurrentChatRoomController < ApplicationController
       end
       format.html { redirect_to current_chat_room_path }
     end
+  end
+
+  private
+
+  def require_real_chat_room
+    redirect_to root_path unless chat_room
+  end
+
+  def chat_room
+    @chat_room ||= ChatRoom.find(params[:id])
   end
 end
