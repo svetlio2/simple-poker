@@ -11,22 +11,30 @@ RSpec.describe ChatRoom do
   end
 
   describe '#destroy' do
-    before(:each) { ChatRoom.create(name: 'DoomedChatRoom') }
+    before(:all) { ChatRoom.create(name: 'DoomedChatRoom') }
 
     let(:chat_room) { ChatRoom.find_by(name: 'DoomedChatRoom') }
 
-    it 'deletes the object' do
-      chat_room.destroy
-      search_chat_room = ChatRoom.find_by(name: 'DoomedChatRoom')
-      expect(search_chat_room).to equal nil
+    context 'does\'t have messages' do
+      it 'deletes the object' do
+        chat_room.destroy
+        search_chat_room = ChatRoom.find_by(name: 'DoomedChatRoom')
+        expect(search_chat_room).to equal nil
+      end
     end
 
-    it 'deletes the messages' do
-      chat_room.messages.build(user_name: 'Ivan', content: 'testcontent1')
-      chat_room.messages.build(user_name: 'Not Ivan', content: 'testcontent2')
-      messages = chat_room.messages
-      chat_room.destroy
-      expect(messages.size).to equal 0
+    context 'have messages' do
+      before do
+        chat_room.messages.build(user_name: 'Ivan', content: 'testcontent1')
+        chat_room.messages.build(user_name: 'Not Ivan', content: 'testcontent2')
+      end
+
+      it 'deletes the messages' do
+        messages = chat_room.messages
+        expect(messages.size).to equal 2
+        chat_room.destroy
+        expect(messages.size).to equal 0
+      end
     end
   end
 end
