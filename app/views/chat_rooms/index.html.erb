@@ -7,7 +7,6 @@
       <h3 align="center"> <%= chat_room.name %> </h3>
       <img src=<%= image_url('chat.png')%>>
       <div class='caption'>
-        
         <p><%= link_to 'Chat', chat_room_path(chat_room), class: 'btn btn-primary' %> <%= link_to 'Delete', chat_room_path(chat_room), class: 'btn btn-default',
                method: :delete, data: { confirm: 'Are you sure?'} %>
         </p>

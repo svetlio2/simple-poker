@@ -2,9 +2,9 @@
 
 <div class="container">
 
-<div class="panel panel-default" id="comments">
-    <div class="panel-body">
-      <ul class="media-list">
+<div class='panel panel-default' id='messages'>
+    <div class='panel-body'>
+      <ul class='media-list'>
         <% @current_chat_room.messages.each do |message| %>
           <p> <%= message.content %> </p>
         <% end %>
@@ -13,9 +13,6 @@
   </div>
 
   <div class="new-message-form">
-    <%= form_tag(current_chat_room_path, method: 'post') do %>
-      <%= text_field_tag('content') %>
-      <%= submit_tag('go') %>
-    <% end %>
-  </div>
+    <%= render 'form' %>
+   </div>
 </div>

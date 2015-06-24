@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Message do
-
   describe 'assosiations' do
     it { should belong_to :chat_room }
   end
@@ -33,5 +32,4 @@ RSpec.describe Message do
       end
     end
   end
-    
 end

@@ -1,0 +1,6 @@
+<%= form_tag(current_chat_room_path, remote: true) do %>
+  <div class='form-groups'>
+    <%= text_field_tag('content') %>
+    <%= submit_tag('Send', id: 'new_message', class: 'btn btn-primary btn-lg')%>
+  </div>
+<% end %>
