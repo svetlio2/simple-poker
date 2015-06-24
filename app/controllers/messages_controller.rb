@@ -2,7 +2,6 @@ class MessagesController < ApplicationController
   before_action :require_real_chat_room
   def index
     @message = Message.new
-    redirect_to chat_rooms_path if @chat_room.nil?
   end
 
   def create
