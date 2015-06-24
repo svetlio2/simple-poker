@@ -5,7 +5,7 @@ publisher = client.publish('/chat_rooms/<%= @message.chat_room.id %>',
 
 publisher.callback(function() {
   $('#content').val('');
-  $('#new_message').find("input[type='submit']").val('Submit').prop('disabled', false)
+  $('#new_message').find("input[type='submit']").val('Send').prop('disabled', false)
 });
 
 publisher.errback(function() {

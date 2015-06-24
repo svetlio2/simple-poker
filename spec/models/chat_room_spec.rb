@@ -15,15 +15,14 @@ RSpec.describe ChatRoom do
 
     let(:chat_room) { ChatRoom.find_by(name: 'DoomedChatRoom') }
 
-    context 'does\'t have messages' do
+    context 'when does\'t have messages' do
       it 'deletes the object' do
-        chat_room.destroy
-        search_chat_room = ChatRoom.find_by(name: 'DoomedChatRoom')
-        expect(search_chat_room).to equal nil
+        id = chat_room.destroy.id
+        expect{ChatRoom.find(id)}.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
 
-    context 'have messages' do
+    context 'when have messages' do
       before do
         chat_room.messages.build(user_name: 'Ivan', content: 'testcontent1')
         chat_room.messages.build(user_name: 'Not Ivan', content: 'testcontent2')

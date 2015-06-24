@@ -4,13 +4,14 @@
 
 <div class='panel panel-default' id='messages'>
     <div class='panel-body'>
+      <ul class='media-list'>
         <% @chat_room.messages.each do |message| %>
-        <ul class='media-list'>
-          <% @message = message %>
-          <p> <%= @message.user_name %>: <%= @message.content %> </p>
-          </ul>
+          <div>
+            <% @message = message %>
+            <%= render @message %>
+          </div>
         <% end %>
-      
+      </ul>
     </div>
   </div>
 

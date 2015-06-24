@@ -3,4 +3,8 @@ class Message < ActiveRecord::Base
   validates :user_name, presence: true
   validates :content, presence: true
   validates :chat_room, presence: true
+
+  def sended
+    created_at.strftime("%I:%M:%S")
+  end
 end
