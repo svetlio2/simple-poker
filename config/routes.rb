@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   root 'sessions#new'
 
   resource :session, except: :show
-  resources :chat_rooms
+  resources :chat_rooms, except: :show
+
+  scope '/chat_rooms/:id' do
+    get '/' => 'current_chat_room#index', as: :current_chat_room
+    post '/' => 'current_chat_room#create'
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

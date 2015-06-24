@@ -1,0 +1,17 @@
+<h1><%= @current_chat_room.name %></h1>
+
+<div class="container">
+
+  <div>
+    <% @current_chat_room.messages.each do |message| %>
+      <p> <%= message.content %> </p>
+    <% end %>
+  </div>
+
+  <div class="new-message-form">
+    <%= form_tag(current_chat_room_path, method: 'post') do %>
+      <%= text_field_tag('content') %>
+      <%= submit_tag('go') %>
+    <% end %>
+  </div>
+</div>

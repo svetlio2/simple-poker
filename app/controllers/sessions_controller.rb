@@ -4,12 +4,8 @@ class SessionsController < ApplicationController
 
   def create
     user = User.new(name: params[:name])
-    session[:user_name] = user.name
+    session[:username] = user.name
 
     redirect_to chat_rooms_path
-  end
-
-  def destroy
-    
   end
 end

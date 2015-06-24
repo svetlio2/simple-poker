@@ -1,6 +1,6 @@
 <h1> Choose room or create new one</h1>
 
-<div id='chat_rooms'>
+<div class='chat-rooms'>
   <h2>Available rooms</h2>
   <% @chat_rooms.each do |chat_room| %>
   <%= link_to "#{chat_room.name}", chat_room_path(chat_room) %>
@@ -10,6 +10,10 @@
   <% end %> 
 </div>
 
-<div new>
-  
+<div class="new-chat-room">
+  <h2>Create new chat room</h2>
+  <%= form_tag(chat_rooms_path, method: 'post') do%>
+    <%= text_field_tag('room_name') %>
+    <%= submit_tag('create') %>
+  <% end %>
 </div>
