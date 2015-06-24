@@ -1,16 +1,23 @@
 <h1> Choose room or create new one</h1>
 
-<div class='chat-rooms'>
-  <h2>Available rooms</h2>
+<div class='row'>
+  <div class='col-sm-6 col-md-4'>
   <% @chat_rooms.each do |chat_room| %>
-  <%= link_to "#{chat_room.name}", chat_room_path(chat_room) %>
-  <%= link_to 'delete', chat_room_path(chat_room),
+    <div class='thumbnail'>
+      <h3 align="center"> <%= chat_room.name %> </h3>
+      <img src=<%= image_url('chat.png')%>>
+      <div class='caption'>
+        
+        <p><%= link_to 'Chat', chat_room_path(chat_room), class: 'btn btn-primary' %> <%= link_to 'Delete', chat_room_path(chat_room), class: 'btn btn-default',
                method: :delete, data: { confirm: 'Are you sure?'} %>
-  <br>
+        </p>
+      </div>
+    </div>
   <% end %> 
+  </div>
 </div>
 
-<div class="new-chat-room">
+<div class='new-chat-room'>
   <h2>Create new chat room</h2>
   <%= form_tag(chat_rooms_path, method: 'post') do%>
     <%= text_field_tag('room_name') %>

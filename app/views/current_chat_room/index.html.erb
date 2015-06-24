@@ -2,10 +2,14 @@
 
 <div class="container">
 
-  <div>
-    <% @current_chat_room.messages.each do |message| %>
-      <p> <%= message.content %> </p>
-    <% end %>
+<div class="panel panel-default" id="comments">
+    <div class="panel-body">
+      <ul class="media-list">
+        <% @current_chat_room.messages.each do |message| %>
+          <p> <%= message.content %> </p>
+        <% end %>
+      </ul>
+    </div>
   </div>
 
   <div class="new-message-form">
