@@ -11,7 +11,7 @@ RSpec.describe ChatRoom do
   end
 
   describe '#destroy' do
-    before(:all) { ChatRoom.create(name: 'DoomedChatRoom') }
+    before(:each) { ChatRoom.create(name: 'DoomedChatRoom') }
 
     let(:chat_room) { ChatRoom.find_by(name: 'DoomedChatRoom') }
 

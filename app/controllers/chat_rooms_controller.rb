@@ -6,11 +6,8 @@ class ChatRoomsController < ApplicationController
 
   def create
     chat_room = ChatRoom.new(name: params[:room_name])
-    if chat_room.save
-      redirect_to chat_rooms_path
-    else
-      redirect_to root_path
-    end
+    chat_room.save
+    redirect_to chat_rooms_path
   end
 
   def destroy

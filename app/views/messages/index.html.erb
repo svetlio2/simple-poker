@@ -1,12 +1,11 @@
 <h1><%= @chat_room.name %></h1>
-
 <div class="container">
 
 <div class='panel panel-default' id='messages'>
     <div class='panel-body'>
       <ul class='media-list'>
         <% @chat_room.messages.each do |message| %>
-          <div>
+          <div class='each-message'>
             <% @message = message %>
             <%= render @message %>
           </div>
@@ -17,5 +16,7 @@
 
   <div class="new-message-form">
     <%= render 'form' %>
-   </div>
+  </div>
+  <br>
+  <%= link_to 'Back', chat_rooms_path %>
 </div>
