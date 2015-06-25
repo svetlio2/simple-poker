@@ -2,7 +2,7 @@
 
 <div class='row'>
   <% @chat_rooms.each do |chat_room| %>
-  <div class='col-sm-6 col-md-3'>
+  <div class='col-sm-3'>
     <div class='thumbnail'>
       <h3 align="center"> <%= chat_room.name %> </h3>
       <img src=<%= image_url('chat.png')%> >
@@ -21,6 +21,6 @@
   <h2>Create new chat room</h2>
   <%= form_tag(chat_rooms_path, method: 'post') do%>
     <%= text_field_tag('room_name') %>
-    <%= submit_tag('create') %>
+    <%= submit_tag('create', class: 'btn btn-primary btn-sm') %>
   <% end %>
 </div>
