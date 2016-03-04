@@ -11,22 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150623181916) do
+ActiveRecord::Schema.define(version: 20150623095348) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "chat_rooms", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "messages", force: :cascade do |t|
-    t.string   "user_name"
+    t.string   "user_name",    null: false
     t.string   "content"
-    t.integer  "chat_room_id"
+    t.integer  "chat_room_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "messages", ["chat_room_id"], name: "index_messages_on_chat_room_id"
+  add_index "messages", ["chat_room_id"], name: "index_messages_on_chat_room_id", using: :btree
 
+  add_foreign_key "messages", "chat_rooms", name: "message_chat_room_id_fk"
 end

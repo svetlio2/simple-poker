@@ -1,5 +1,3 @@
-
-
 publisher = client.publish('/chat_rooms/<%= @message.chat_room.id %>',
                            { message: "<%=j render '/messages/message' %>" });
 
