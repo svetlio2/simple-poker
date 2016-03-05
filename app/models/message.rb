@@ -5,6 +5,6 @@ class Message < ActiveRecord::Base
   validates :chat_room, presence: true
 
   def sended
-    created_at.strftime("%I:%M:%S")
+    created_at.strftime('%I:%M:%S')
   end
 end
