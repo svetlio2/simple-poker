@@ -27,6 +27,6 @@ class MessagesController < ApplicationController
   end
 
   def chat_room
-    @chat_room ||= ChatRoom.find(params[:id])
+    @chat_room ||= ChatRoom.find_by(id: params[:id])
   end
 end
