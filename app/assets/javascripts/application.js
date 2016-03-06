@@ -17,4 +17,4 @@
 //= require turbolinks
 //= require_tree .
 //= require faye
-//= require messanger
+//= require messenger
