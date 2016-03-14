@@ -5,7 +5,7 @@
     <div class='panel-body'>
       <ul class='media-list'>
         <% @chat_room.messages.each do |message| %>
-          <div class='each-message'>
+          <div>
             <% @message = message %>
             <%= render @message %>
           </div>
@@ -14,9 +14,6 @@
     </div>
   </div>
 
-  <div class="new-message-form">
-    <%= render 'form' %>
-  </div>
-  <br>
+  <%= render 'form' %>
   <%= link_to 'Back', chat_rooms_path %>
 </div>
