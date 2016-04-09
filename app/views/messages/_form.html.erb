@@ -1,4 +1,4 @@
-<%= form_tag(chat_room_path, id: 'new_message', remote: true) do %>
+<%= form_tag(chat_room_path, id: 'new_message') do %>
     <%= text_field_tag('content') %>
     <%= submit_tag('Send', class: 'btn btn-primary btn-sm')%>
 <% end %>
