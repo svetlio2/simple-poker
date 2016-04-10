@@ -1,0 +1,25 @@
+<div id="live-chat">
+    <header class="clearfix">
+        <a href="#" class="chat-close">x</a>
+        <h4><%= @chat_room.name %></h4>
+        <!-- <span class="chat-message-counter">3</span> -->
+    </header>
+    <div class="chat">
+        <div class="chat-history">
+            <% @chat_room.messages.each do |message| %>
+            <div class="chat-message clearfix">
+                <div class="chat-message-content clearfix">
+                    <% @message = message %>
+                    <span class="chat-time"><%= @message.sended %></span>
+                    <h5><%= @message.user_name %></h5>
+                    <p><%= @message.content %></p>
+                </div>
+            </div>
+            <hr>
+            <% end %>
+        </div>
+        <form action="<%= chat_room_path %>" class="new-message">
+            <input type="text" name="content" id="content">
+        </form>
+    </div>
+</div>
