@@ -1,11 +1,12 @@
-publisher = client.publish('/chat_rooms/<%= @message.chat_room.id %>',
-                           { message: "<%=j render '/messages/message' %>" });
-
-publisher.callback(function() {
-  $('#content').val('');
-  $('#new_message').find("input[type='submit']").val('Send').prop('disabled', false)
-});
-
-publisher.errback(function() {
-  alert('There was an error while posting your message');
+$('.new-message').submit(function(event) {
+    console.log('submitting')
+    event.preventDefault();
+    client.publish(
+        '/chat_rooms/<%= @message.chat_room.id %>',
+        { message: $('.new-message input').val(); }
+    ).then(function() {
+        $('.new-message input').val('');
+    }, function(error) {
+        alert('There was an error while posting your message' + error);
+    });
 });
