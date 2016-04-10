@@ -13,8 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require faye
 //= require turbolinks
 //= require_tree .
-//= require faye
-//= require messenger

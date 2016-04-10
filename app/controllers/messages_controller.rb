@@ -16,7 +16,7 @@ class MessagesController < ApplicationController
         format.js { render nothing: true }
       end
 
-      format.html { redirect_to current_chat_room_path }
+      format.html { redirect_to chat_room_path }
     end
   end
 
