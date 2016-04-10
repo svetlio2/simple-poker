@@ -5,18 +5,18 @@ class MessagesController < ApplicationController
   end
 
   def create
-    username = session[:username]
-    current_chat_room = ChatRoom.find(params[:id])
-    @message = Message.new(user_name: username,
+    @message = Message.new(user_name: session[:username],
                            content: params[:content],
-                           chat_room: current_chat_room)
+                           chat_room: chat_room)
+
     respond_to do |format|
       if @message.save
-        format.js {render 'create'}
+        format.js { render 'create' }
       else
-        format.js {render nothing: true}
+        format.js { render nothing: true }
       end
-      format.html { redirect_to current_chat_room_path }
+
+      format.html { redirect_to chat_room_path }
     end
   end
 
