@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :messages, only: :create
       resource :chat_rooms, only: :create
+      get 'chat_rooms/:room_id/messages' => 'messages#index'
     end
   end
 
