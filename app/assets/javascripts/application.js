@@ -16,6 +16,6 @@
 //= require turbolinks
 //= require lib/knockout-3.4.0
 //= require lib/arbiter
+//= require lib/moment
 //= require bindings/scrollToBottom
 //= require bindings/toggler
-//= require view-models/chat

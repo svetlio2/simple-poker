@@ -1,4 +1,5 @@
 function ChatViewModel(roomID, roomName) {
+
     var self = this;
     self.roomName = roomName;
 
@@ -11,20 +12,28 @@ function ChatViewModel(roomID, roomName) {
         self.unreadMessages = ko.observable(0);
 
         self.getData();
-        Arbiter.subscribe('new-message', self.pushNewMessage);
+        setTimeout(function(){
+            Arbiter.subscribe('new-message', self.pushNewMessage)
+        }, 100);
     };
 
+
     self.getData = function() {
-        // $.getJSON('/api/v1/poker-room/' + roomID + '/messages/', onDataLoad);
-        self.onDataLoad(self.funckingMockBecauseMihailIsSnail);
+        $.getJSON('/api/v1/chat_rooms/' + roomID + '/messages', self.onDataLoad);
     };
 
     self.onDataLoad = function(data) {
+        var formattedData = data.map(self.formatMessage);
         self.messages(data);
     };
 
+    self.formatMessage = function(message) {
+        message.created_at = moment(message.created_at).format('Do MMMM YYYY, H:mm:ss');
+        return message;
+    };
+
     self.pushNewMessage = function(data) {
-        self.messages.push(data);
+        self.messages.push(self.formatMessage(data));
         if (!self.opened()) {
             self.unreadMessages(self.unreadMessages() + 1);
         }
@@ -34,12 +43,6 @@ function ChatViewModel(roomID, roomName) {
         $.post('/api/v1/messages/', { room_id: roomID, content: self.newMessageContent });
         self.newMessageContent('');
     };
-
-    self.funckingMockBecauseMihailIsSnail = [
-        {sended: '16-04-2014', user_name: 'mishoegei', content: 'bodur den'},
-        {sended: '17-04-2014', user_name: 'mishoegei2', content: 'zdrasti'},
-        {sended: '17-04-2014', user_name: 'mishoegei3', content: 'zdraveite'},
-    ];
 
     self.init();
 };

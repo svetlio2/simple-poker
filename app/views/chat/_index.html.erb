@@ -8,23 +8,20 @@
         <div class="chat-history" data-bind="foreach: messages, scrollToBottomOnChange: messages">
             <div class="chat-message clearfix">
                 <div class="chat-message-content clearfix">
-                    <span class="chat-time" data-bind="text: sended"></span>
+                    <span class="chat-time" data-bind="text: created_at"></span>
                     <h5 data-bind="text: user_name"></h5>
                     <p data-bind="text: content"></p>
                 </div>
             </div>
             <hr>
         </div>
-        <form data-bind="submit: submitMessage">
-            <input name="content" data-bind="value: newMessageContent" autocomplete="off">
+        <form data-bind="submit: submitMessage" class="new-message-form">
+            <input name="content" data-bind="value: newMessageContent" autocomplete="off" required>
         </form>
     </div>
 </div>
 
-
 <script type="text/javascript">
-    $(function() {
         var chatViewModel = new ChatViewModel('<%= @chat_room.id %>', '<%= @chat_room.name %>');
         ko.applyBindings(chatViewModel, $('#live-chat')[0]);
-    });
 </script>
