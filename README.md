@@ -5,10 +5,10 @@ Featuring dynamic chat between players.Every user has all rights.
 
 # Getting Started
 
-## Install Rails and RVM
+## Install RBENV
 
 ```
-$ curl -L https://get.rvm.io | bash -s stable --ruby --rails
+http://octopress.org/docs/setup/rbenv/
 ```
 
 ## Install Rails using RubyGems
@@ -23,9 +23,9 @@ $ gem install rails
 $ sudo apt-get install postgresql postgresql-contrib libpq-dev
 ```
 
-* Change fields `peer` and `md5` to `trusted` in
+* Change fields `peer` and `md5` to `trust` in
 
-`/etc/postgresql/9.3/main/pg_hba.conf`
+`/etc/postgresql/9.X/main/pg_hba.conf`
 
 ## Restart psql server
 
@@ -60,16 +60,28 @@ $ postgres=#\password shat_user
 $ postgres=#\q
 ```
 
+### Install bundler
+
+```
+$ sudo apt-get install ruby-bundler
+```
+
 ## Install dependency gems
 
 ```
 $ bundle install
 ```
 
+### If you have some troubles with installing dependencies try
+
+```
+$ sudo apt-get install ruby-dev
+```
+
 ## Create database
 
 ```
-$ bundle exec rake db:create
+$ rails rake db:create
 ```
 
 ## Run migrations
